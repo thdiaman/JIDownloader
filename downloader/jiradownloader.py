@@ -42,7 +42,7 @@ class JiraDownloader:
 		try:
 			r = requests.get(self.jira_url + "project", auth=credentials)
 			if int(r.status_code) == 200:
-				self.wait_after_request(1)
+				self.wait_after_request()
 				return True
 			else:
 				return False
@@ -69,7 +69,7 @@ class JiraDownloader:
 				else:
 					headers = {}
 				r = requests.get(address + parameters, headers = headers, auth = self.credentials)
-				self.wait_after_request(1)
+				self.wait_after_request()
 				return r
 			except TimeoutError:
 				return None
